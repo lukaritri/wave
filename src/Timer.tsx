@@ -10,10 +10,20 @@ const primaryLabel: Record<TimerStatus, string> = {
 
 const secondaryLabel: string = 'end'
 
-function SecondaryButton({timerStatus} : {timerStatus:TimerStatus}) {
-  if (timerStatus != 'idle') {
-    return <button>{secondaryLabel}</button>
-  }
+type SecondaryButtonProps = {
+  timerStatus : TimerStatus
+  onSecondaryClick : () => void
+}
+
+function SecondaryButton({timerStatus, onSecondaryClick} : SecondaryButtonProps) {
+  if (timerStatus === 'idle') return null
+
+  return (
+    <button onClick={onSecondaryClick}>
+      {secondaryLabel}
+    </button>
+  )
+  
 }
 
 export function Timer() {
@@ -24,16 +34,23 @@ export function Timer() {
       switch (prev) {
         case 'idle' : return 'running'
         case 'running' : return 'paused'
-        case 'paused' : return 'idle'
+        case 'paused' : return 'running'
       }
     })
+  }
+
+  function handleSecondaryClick() {
+    changeState('idle')
   }
 
   return (
     <>
       <h1>20:00</h1>
       <button onClick={handlePrimaryClick}>{primaryLabel[timerStatus]}</button>
-      <SecondaryButton timerStatus={timerStatus} />
+      <SecondaryButton 
+        timerStatus={timerStatus} 
+        onSecondaryClick={handleSecondaryClick}
+      />
     </>
   )
 }
