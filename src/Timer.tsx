@@ -9,7 +9,7 @@ const primaryLabel: Record<TimerState, string> = {
 }
 
 export function Timer() {
-  const [state, changeState] = useState<TimerState>('idle')
+  const [status, changeState] = useState<TimerState>('idle')
 
   function handlePrimaryClick() {
     changeState(prev => {
@@ -24,7 +24,7 @@ export function Timer() {
   return (
     <>
       <h1>20:00</h1>
-      <button onClick={handlePrimaryClick}>{primaryLabel[state]}</button>
+      <button onClick={handlePrimaryClick}>{primaryLabel[status]}</button>
     </>
   )
 }
