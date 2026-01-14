@@ -1,22 +1,30 @@
-import { useState } from 'react';
+import { useState } from 'react'
+
+type TimerState = 'idle' | 'running' | 'paused'
+
+const primaryLabel: Record<TimerState, string> = {
+  idle : 'start',
+  running : 'pause',
+  paused : 'resume'
+}
 
 export function Timer() {
-  const [state, changeState] = useState('idle');
+  const [state, changeState] = useState<TimerState>('idle')
 
-  function handleClick() {
-    changeState(s => {
-      if (s == 'idle') return 'running'
-      if (s == 'running') return 'paused'
-      return 'idle'
+  function handlePrimaryClick() {
+    changeState(prev => {
+      switch (prev) {
+        case 'idle' : return 'running'
+        case 'running' : return 'paused'
+        case 'paused' : return 'idle'
+      }
     })
   }
-
-  const buttonText = state == 'idle' ? 'start' : state == 'running' ? 'pause' : 'resume'
 
   return (
     <>
       <h1>20:00</h1>
-      <button onClick={handleClick}>{buttonText}</button>
+      <button onClick={handlePrimaryClick}>{primaryLabel[state]}</button>
     </>
   )
 }
