@@ -8,9 +8,11 @@ const primaryLabel: Record<TimerStatus, string> = {
   paused : 'resume'
 }
 
-function EndButton({timerStatus} : {timerStatus:TimerStatus}) {
+const secondaryLabel: string = 'end'
+
+function SecondaryButton({timerStatus} : {timerStatus:TimerStatus}) {
   if (timerStatus != 'idle') {
-    return <button>end</button>
+    return <button>{secondaryLabel}</button>
   }
 }
 
@@ -31,7 +33,7 @@ export function Timer() {
     <>
       <h1>20:00</h1>
       <button onClick={handlePrimaryClick}>{primaryLabel[timerStatus]}</button>
-      <EndButton timerStatus={timerStatus} />
+      <SecondaryButton timerStatus={timerStatus} />
     </>
   )
 }
