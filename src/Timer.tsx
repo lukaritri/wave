@@ -1,15 +1,15 @@
 import { useState } from 'react'
 
-type TimerState = 'idle' | 'running' | 'paused'
+type TimerStatus = 'idle' | 'running' | 'paused'
 
-const primaryLabel: Record<TimerState, string> = {
+const primaryLabel: Record<TimerStatus, string> = {
   idle : 'start',
   running : 'pause',
   paused : 'resume'
 }
 
 export function Timer() {
-  const [status, changeState] = useState<TimerState>('idle')
+  const [timerStatus, changeState] = useState<TimerStatus>('idle')
 
   function handlePrimaryClick() {
     changeState(prev => {
@@ -24,7 +24,7 @@ export function Timer() {
   return (
     <>
       <h1>20:00</h1>
-      <button onClick={handlePrimaryClick}>{primaryLabel[status]}</button>
+      <button onClick={handlePrimaryClick}>{primaryLabel[timerStatus]}</button>
     </>
   )
 }
