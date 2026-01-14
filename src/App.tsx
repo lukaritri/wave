@@ -1,6 +1,5 @@
 import './App.css'
-import { Timer } from './components/Timer/Timer'
-import { PrimaryButton } from './components/PrimaryButton/PrimaryButton'
+import { Timer } from './Timer'
 
 function App() {
 
@@ -8,7 +7,6 @@ function App() {
     <>
       <h1>wave</h1>
       <Timer />
-      <PrimaryButton text='Click' />
     </>
   )
 }
