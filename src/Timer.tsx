@@ -73,7 +73,7 @@ export function Timer() {
 
     tick();
     const id = setInterval(tick, 250)
-    return () => clearInterval(id)
+    return () => clearInterval(id) // needed for when re-starting the timer
   }, [endTimeMs])
 
   const remainingMin: number = Math.floor(remainingSec / 60)
