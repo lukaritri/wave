@@ -41,7 +41,7 @@ export function Timer() {
     setTimerStatus(prev => {
       switch (prev) {
         case 'idle' :
-          setEndTimeMs(Date.now() + totalDurationSec * 1000) 
+          setEndTimeMs(Date.now() + totalDurationSec * 1000) // start timer
           return 'running'
         case 'running' : return 'paused'
         case 'paused' : return 'running'
