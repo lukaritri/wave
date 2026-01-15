@@ -81,7 +81,7 @@ export function Timer() {
   return (
     <>
       <h1>
-        {remainingMin}:{String(remainingSec % 60).padStart(2, '0')}
+        {String(remainingMin).padStart(2, '0')}:{String(remainingSec % 60).padStart(2, '0')}
       </h1>
 
       <button onClick={handlePrimaryClick}>
