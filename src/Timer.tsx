@@ -79,16 +79,21 @@ export function Timer() {
           return 'paused'
 
         case 'paused' : 
-          setEndTimeMs(Date.now() + remainingSec * 1000) // start timer
+          setEndTimeMs(Date.now() + remainingSec * 1000) // restart timer
           return 'running'
       }
     })
   }
 
   function handleSecondaryClick() {
-    setTimerStatus('idle')
-    setEndTimeMs(null)
-    setRemainingSec(totalDurationSec)
+    if (confirm('End session and restart timer?')) {
+      setTimerStatus('idle')
+      setEndTimeMs(null)
+      setRemainingSec(totalDurationSec)
+    } else {
+      // treat confirmation dialog as if timer was paused and resumed
+      setEndTimeMs(Date.now() + remainingSec * 1000)
+    }
   }
 
   return (
