@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 
 /*
-Timer state
+Top-level variables
 */
 
 type TimerStatus = 'idle' | 'running' | 'paused'
@@ -32,17 +32,11 @@ function SecondaryButton({timerStatus, onSecondaryClick} : SecondaryButtonProps)
 
 export function Timer() {
   /*
-  Timer status
-  */
-
-  const [timerStatus, setTimerStatus] = useState<TimerStatus>('idle')
-
-  /*
   Timer logic
   */
 
+  const [timerStatus, setTimerStatus] = useState<TimerStatus>('idle')
   const totalDurationSec: number = 20 * 60
-
   const [remainingSec, setRemainingSec] = useState<number>(totalDurationSec)
   const [endTimeMs, setEndTimeMs] = useState<number | null>(null)
 
@@ -51,6 +45,7 @@ export function Timer() {
     if (endTimeMs == null) return
 
     const tick = () => {
+      // calculating time left more reliable than setInterval every second
       const timeLeftMs = endTimeMs - Date.now()
       const timeLeftSec = Math.max(0, Math.ceil(timeLeftMs / 1000))
       setRemainingSec(timeLeftSec)
@@ -79,7 +74,10 @@ export function Timer() {
         case 'idle' :
           setEndTimeMs(Date.now() + totalDurationSec * 1000) // start timer
           return 'running'
-        case 'running' : return 'paused'
+
+        case 'running' : 
+          return 'paused'
+
         case 'paused' : 
           setEndTimeMs(Date.now() + remainingSec * 1000) // start timer
           return 'running'
