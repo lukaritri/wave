@@ -32,26 +32,10 @@ function SecondaryButton({timerStatus, onSecondaryClick} : SecondaryButtonProps)
 
 export function Timer() {
   /*
-  State updates 
+  Timer status
   */
 
   const [timerStatus, setTimerStatus] = useState<TimerStatus>('idle')
-
-  function handlePrimaryClick() {
-    setTimerStatus(prev => {
-      switch (prev) {
-        case 'idle' :
-          setEndTimeMs(Date.now() + totalDurationSec * 1000) // start timer
-          return 'running'
-        case 'running' : return 'paused'
-        case 'paused' : return 'running'
-      }
-    })
-  }
-
-  function handleSecondaryClick() {
-    setTimerStatus('idle')
-  }
 
   /*
   Timer logic
@@ -62,6 +46,7 @@ export function Timer() {
   const [remainingSec, setRemainingSec] = useState<number>(totalDurationSec)
   const [endTimeMs, setEndTimeMs] = useState<number | null>(null)
 
+  // useEffect runs when page re-renders
   useEffect(() => {
     if (endTimeMs == null) return
 
@@ -71,12 +56,38 @@ export function Timer() {
       setRemainingSec(timeLeftSec)
     }
 
-    tick();
     const id = setInterval(tick, 250)
+
+    if (timerStatus == 'paused') {
+      clearInterval(id)
+    }
+
     return () => clearInterval(id) // needed for when re-starting the timer
-  }, [endTimeMs])
+  }, [endTimeMs, timerStatus])
 
   const remainingMin: number = Math.floor(remainingSec / 60)
+
+  /*
+  Button click functions
+  */
+
+  function handlePrimaryClick() {
+    setTimerStatus(prev => {
+      switch (prev) {
+        case 'idle' :
+          setEndTimeMs(Date.now() + totalDurationSec * 1000) // start timer
+          return 'running'
+        case 'running' : return 'paused'
+        case 'paused' : 
+          setEndTimeMs(Date.now() + remainingSec * 1000) // start timer
+          return 'running'
+      }
+    })
+  }
+
+  function handleSecondaryClick() {
+    setTimerStatus('idle')
+  }
 
   return (
     <>
