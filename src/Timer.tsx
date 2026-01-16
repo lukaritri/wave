@@ -56,9 +56,11 @@ export function Timer() {
       setRemainingSec(timeLeftSec)
     }
 
+    /* I'm not a fan of how I setInterval then immediately clear it 
+    if the state is not running, not sure how to improve it. */
     const id = setInterval(tick, 250)
 
-    if (timerStatus == 'paused') {
+    if (timerStatus == 'paused' || timerStatus == 'idle') {
       clearInterval(id)
     }
 
@@ -87,6 +89,8 @@ export function Timer() {
 
   function handleSecondaryClick() {
     setTimerStatus('idle')
+    setEndTimeMs(null)
+    setRemainingSec(totalDurationSec)
   }
 
   return (
