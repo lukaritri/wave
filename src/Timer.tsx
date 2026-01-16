@@ -42,7 +42,7 @@ export function Timer() {
 
   // useEffect runs when page re-renders
   useEffect(() => {
-    if (endTimeMs == null) return
+    if (endTimeMs === null) return
 
     const tick = () => {
       // calculating time left more reliable than setInterval every second
@@ -55,7 +55,7 @@ export function Timer() {
     if the state is not running, not sure how to improve it. */
     const id = setInterval(tick, 250)
 
-    if (timerStatus == 'paused' || timerStatus == 'idle') {
+    if (timerStatus === 'paused' || timerStatus === 'idle') {
       clearInterval(id)
     }
 
