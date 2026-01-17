@@ -112,9 +112,9 @@ export function Timer() {
 
   return (
     <>
-      <h1 className='time'>
+      <h1 className='timer'>
         {String(remainingMin).padStart(2, '0')}
-        <span className='colon'>:</span>
+        <span>:</span>
         {String(remainingSec % 60).padStart(2, '0')}
       </h1>
 
