@@ -12,11 +12,25 @@ const primaryLabel: Record<TimerStatus, string> = {
   paused : 'resume'
 }
 
+type PrimaryButtonProps = {
+  timerStatus : TimerStatus
+  onPrimaryClick : () => void
+}
+
 const secondaryLabel: string = 'end'
 
 type SecondaryButtonProps = {
   timerStatus : TimerStatus
   onSecondaryClick : () => void
+}
+
+function PrimaryButton({timerStatus, onPrimaryClick} : PrimaryButtonProps) {
+  return (
+    <button onClick={onPrimaryClick}>
+      {primaryLabel[timerStatus]}
+    </button>
+  )
+  
 }
 
 function SecondaryButton({timerStatus, onSecondaryClick} : SecondaryButtonProps) {
@@ -102,9 +116,10 @@ export function Timer() {
         {String(remainingMin).padStart(2, '0')}:{String(remainingSec % 60).padStart(2, '0')}
       </h1>
 
-      <button onClick={handlePrimaryClick}>
-        {primaryLabel[timerStatus]}
-      </button>
+      <PrimaryButton
+        timerStatus={timerStatus}
+        onPrimaryClick={handlePrimaryClick}
+      />
 
       <SecondaryButton 
         timerStatus={timerStatus} 
