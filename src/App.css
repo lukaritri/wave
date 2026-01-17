@@ -13,15 +13,20 @@
 
 .brand {
   font-size: 48px;
-  font-weight: 600;
-  letter-spacing: 0.02em;
+  font-weight: 400;
+  letter-spacing: 0.1em;
   color: var(--muted);
 }
 
 .time {
   font-size: 72px;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.02em;
+  line-height: 1;
+}
+
+.colon {
+  color: var(--accent);
 }
 
 .controls {
@@ -31,21 +36,21 @@
 }
 
 /* Buttons */
-.btn {
+button {
   border-radius: var(--radius-2);
   padding: 10px 18px;
   font-size: 16px;
   background: transparent;
-  color: var(--text);
-  border: 1px solid rgba(255, 255, 255, 0.28);
+  border: transparent;
   cursor: pointer;
 }
 
 .btnPrimary {
-  background: rgba(127, 183, 190, 0.22);
-  border-color: rgba(127, 183, 190, 0.5);
+  color: #ffffff;
+  background: var(--accent);
 }
 
 .btnSecondary {
-  opacity: 0.9;
+  opacity: 0.5;
+  color: var(--text);
 }
