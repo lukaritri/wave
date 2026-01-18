@@ -112,21 +112,25 @@ export function Timer() {
 
   return (
     <>
-      <h1 className='timer'>
-        {String(remainingMin).padStart(2, '0')}
-        <span>:</span>
-        {String(remainingSec % 60).padStart(2, '0')}
-      </h1>
+      <div className='timerWrapper'>
+        <h1 className='time'>
+          {String(remainingMin).padStart(2, '0')}
+          <span>:</span>
+          {String(remainingSec % 60).padStart(2, '0')}
+        </h1>
+      </div>
 
-      <PrimaryButton
-        timerStatus={timerStatus}
-        onPrimaryClick={handlePrimaryClick}
-      />
+      <div className='controls'>
+        <PrimaryButton
+          timerStatus={timerStatus}
+          onPrimaryClick={handlePrimaryClick}
+        />
 
-      <SecondaryButton 
-        timerStatus={timerStatus} 
-        onSecondaryClick={handleSecondaryClick}
-      />
+        <SecondaryButton 
+          timerStatus={timerStatus} 
+          onSecondaryClick={handleSecondaryClick}
+        />
+      </div>
 
     </>
   )
