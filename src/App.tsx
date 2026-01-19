@@ -4,10 +4,14 @@ import { Timer } from './Timer'
 function App() {
 
   return (
-    <>
-      <h1>wave</h1>
-      <Timer />
-    </>
+    <div className='app'>
+
+      <div className='panel'>
+        <h1 className='brand'>wave</h1>
+        <Timer />
+      </div>
+      
+    </div>
   )
 }
 

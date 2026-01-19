@@ -26,7 +26,7 @@ type SecondaryButtonProps = {
 
 function PrimaryButton({timerStatus, onPrimaryClick} : PrimaryButtonProps) {
   return (
-    <button onClick={onPrimaryClick}>
+    <button className='btn-primary' onClick={onPrimaryClick}>
       {primaryLabel[timerStatus]}
     </button>
   )
@@ -37,7 +37,7 @@ function SecondaryButton({timerStatus, onSecondaryClick} : SecondaryButtonProps)
   if (timerStatus === 'idle') return null
 
   return (
-    <button onClick={onSecondaryClick}>
+    <button className='btn-secondary' onClick={onSecondaryClick}>
       {secondaryLabel}
     </button>
   )
@@ -112,19 +112,23 @@ export function Timer() {
 
   return (
     <>
-      <h1>
-        {String(remainingMin).padStart(2, '0')}:{String(remainingSec % 60).padStart(2, '0')}
+      <h1 className='time'>
+        {String(remainingMin).padStart(2, '0')}
+        <span>:</span>
+        {String(remainingSec % 60).padStart(2, '0')}
       </h1>
 
-      <PrimaryButton
-        timerStatus={timerStatus}
-        onPrimaryClick={handlePrimaryClick}
-      />
+      <div className='controls'>
+        <PrimaryButton
+          timerStatus={timerStatus}
+          onPrimaryClick={handlePrimaryClick}
+        />
 
-      <SecondaryButton 
-        timerStatus={timerStatus} 
-        onSecondaryClick={handleSecondaryClick}
-      />
+        <SecondaryButton 
+          timerStatus={timerStatus} 
+          onSecondaryClick={handleSecondaryClick}
+        />
+      </div>
 
     </>
   )

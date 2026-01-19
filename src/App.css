@@ -1,42 +1,67 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.brand {
+  font-size: 3.5rem;
+  font-weight: 350;
+  letter-spacing: 0.15em;
+  color: var(--muted);
+  margin-top: 8rem;
+  line-height: 1;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.time {
+  font-size: 6rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  margin-top: 5rem;
+  margin-bottom: 3rem;
 }
 
-.card {
-  padding: 2em;
+.time span {
+  vertical-align: 0.08em;
+  color: var(--accent);
 }
 
-.read-the-docs {
-  color: #888;
+.controls {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* Buttons */
+button {
+  font-size: 16px;
+  border: transparent;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+}
+
+.btn-primary {
+  border-radius: var(--radius-2);
+  color: #ffffff;
+  background: var(--accent);
+  padding: var(--space-1) var(--space-3);
+}
+
+.btn-secondary {
+  background: transparent;
+  opacity: 0.5;
+  color: var(--text);
+  padding: 6px;
+  line-height: 1;
 }
