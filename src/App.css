@@ -1,10 +1,8 @@
 .app {
   min-height: 100vh;
-  /* background-color: green; */
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: center; */
 }
 
 .panel {
@@ -12,7 +10,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* background-color: yellow; */
 }
 
 .brand {
@@ -20,8 +17,6 @@
   font-weight: 350;
   letter-spacing: 0.15em;
   color: var(--muted);
-  /* background-color: orange; */
-  /* padding-bottom: 100px; */
   margin-top: 8rem;
   line-height: 1;
 }
@@ -32,20 +27,12 @@
   letter-spacing: 0.02em;
   font-variant-numeric: tabular-nums;
   line-height: 1;
-  /* background-color: aqua; */
   margin-top: 5rem;
   margin-bottom: 3rem;
-
-  /* display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center; */
-  /* min-height: 50vh;   */
 }
 
 .time span {
   vertical-align: 0.08em;
-  /* transform: translateY(-0.08em); */
   color: var(--accent);
 }
 
@@ -54,7 +41,6 @@
   flex-flow: column;
   align-items: center;
   gap: var(--space-3);
-  /* background-color: blue; */
 }
 
 /* Buttons */
@@ -65,16 +51,15 @@ button {
   letter-spacing: 0.05em;
 }
 
-.btnPrimary {
+.btn-primary {
   border-radius: var(--radius-2);
   color: #ffffff;
   background: var(--accent);
   padding: var(--space-1) var(--space-3);
 }
 
-.btnSecondary {
+.btn-secondary {
   background: transparent;
-  /* background-color: lime; */
   opacity: 0.5;
   color: var(--text);
   padding: 6px;
