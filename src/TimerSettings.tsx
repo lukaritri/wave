@@ -1,3 +1,4 @@
+import './TimerSettings.css'
 
 export function TimerSettings() {
   return (
