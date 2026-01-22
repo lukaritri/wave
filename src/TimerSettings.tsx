@@ -6,10 +6,11 @@ import { useState } from 'react'
 type TimeComponentProps = {
   displayTime : number,
   increment : () => void,
-  decrement : () => void
+  decrement : () => void,
+  label : string
 }
 
-function TimeComponent({displayTime, increment, decrement}:TimeComponentProps) {
+function TimeComponent({displayTime, increment, decrement, label}:TimeComponentProps) {
   return (
     <div className='timer-settings-unit'>
 
@@ -24,6 +25,10 @@ function TimeComponent({displayTime, increment, decrement}:TimeComponentProps) {
       <button className='icon-button' onClick={decrement}>
         <DownArrow />
       </button>
+
+      <div className='timer-settings-label'>
+        {label}
+      </div>
       
     </div>
   )
@@ -46,8 +51,31 @@ export function TimerSettings() {
         decrement={() => {
           setHours(Math.max(hours - 1, 0))
         }}
+        label='hours'
       />
-      
+
+      <TimeComponent 
+        displayTime={minutes}
+        increment={() => {
+          setMinutes(Math.min(minutes + 1, 59))
+        }}
+        decrement={() => {
+          setMinutes(Math.max(minutes - 1, 0))
+        }}
+        label='minutes'
+      />
+
+      <TimeComponent 
+        displayTime={seconds}
+        increment={() => {
+          setSeconds(Math.min(seconds + 1, 59))
+        }}
+        decrement={() => {
+          setSeconds(Math.max(seconds - 1, 0))
+        }}
+        label='seconds'
+      />
+
     </div>
   )
 }
