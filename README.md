@@ -46,13 +46,17 @@ src/
 
 This project is a WIP. Currently, the core timer functionality has been implemented with simple UI.
 
-## Future Features/Ideas
+## Currently Working On
 
 - Simple wave animation
 - Ability for users to change the timer
+
+## Future Ideas
+
 - Break mode
 - Pomodoro mode
 - Ocean wave ambient sounds
+- Dynamic and reactive wave animation
 
 ## Licence
 
