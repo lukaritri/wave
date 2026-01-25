@@ -9,7 +9,7 @@ A minimal study/focus timer inspired by calming ocean waves. Developed with Reac
 
 ## Motivation
 
-Many existing productivity tools are either cluttered and overwhelming or have bare bones visuals. Wave was created to be minimal and not distracting with thought put into visuals and aesthetics, creating a pleasant focus experience.
+Many existing productivity tools are either cluttered and overwhelming or visually uninspiring. Wave was created to be minimal and not distracting with thought put into visuals and aesthetics, creating a pleasant focus experience.
 
 This project is also for me to explore:
 
