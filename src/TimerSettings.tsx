@@ -40,6 +40,8 @@ export function TimerSettings() {
   const [minutes, setMinutes] = useState<number>(0)
   const [seconds, setSeconds] = useState<number>(0)
 
+  // TODO: look into <dialog> elements
+
   return (
     <div className='timer-settings'>
 
