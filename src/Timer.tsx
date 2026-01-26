@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react'
+import type { TimerStatus } from './types/react'
 
 /*
 Top-level variables
 */
-
-type TimerStatus = 'idle' | 'running' | 'paused'
 
 const primaryLabel: Record<TimerStatus, string> = {
   idle : 'start',
@@ -44,13 +43,17 @@ function SecondaryButton({timerStatus, onSecondaryClick} : SecondaryButtonProps)
   
 }
 
-export function Timer() {
+type TimerProps = {
+  totalDurationSec : number,
+  toggleSettings : () => void
+}
+
+export function Timer({totalDurationSec, toggleSettings} : TimerProps) {
   /*
   Timer logic
   */
 
   const [timerStatus, setTimerStatus] = useState<TimerStatus>('idle')
-  const totalDurationSec: number = 20 * 60
   const [remainingSec, setRemainingSec] = useState<number>(totalDurationSec)
   const [endTimeMs, setEndTimeMs] = useState<number | null>(null)
 
@@ -112,14 +115,16 @@ export function Timer() {
 
   return (
     <div className='timer-page'>
-      
+
+      <h1>{totalDurationSec}</h1>
+
       <h1 className='brand'>wave</h1>
 
-      <h1 className='time'>
+      <button className='time' onClick={toggleSettings}>
         {String(remainingMin).padStart(2, '0')}
         <span>:</span>
         {String(remainingSec % 60).padStart(2, '0')}
-      </h1>
+      </button>
 
       <div className='controls'>
         <PrimaryButton

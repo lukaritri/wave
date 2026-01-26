@@ -34,13 +34,23 @@ function TimeComponent({displayTime, increment, decrement, label}:TimeComponentP
   )
 }
 
-export function TimerSettings() {
+type TimerSettingsProps = {
+  totalDurationSec : number,
+  updateTime : (value: number) => void,
+  toggleSettings : () => void
+}
 
-  const [hours, setHours] = useState<number>(0)
-  const [minutes, setMinutes] = useState<number>(0)
-  const [seconds, setSeconds] = useState<number>(0)
+export function TimerSettings({totalDurationSec, updateTime, toggleSettings} : TimerSettingsProps) {
 
-  // TODO: look into <dialog> elements
+  const [hours, setHours] = useState<number>(Math.floor(totalDurationSec / 3600))
+  const [minutes, setMinutes] = useState<number>(Math.floor((totalDurationSec - (hours * 3600)) / 60))
+  const [seconds, setSeconds] = useState<number>(totalDurationSec - (hours * 3600) - (minutes * 60))
+
+  function onDone() {
+    const totalDurationSec = seconds + (60 * minutes) + (360 * hours)
+    updateTime(totalDurationSec)
+    toggleSettings()
+  }
 
   return (
     <div className='timer-settings-overlay'>
@@ -84,10 +94,10 @@ export function TimerSettings() {
 
         </div>
 
-        <button>Done</button>
+        <button onClick={onDone}>Done</button>
 
       </div>
-      
+
     </div>
   )
 }
