@@ -43,41 +43,51 @@ export function TimerSettings() {
   // TODO: look into <dialog> elements
 
   return (
-    <div className='timer-settings'>
+    <div className='timer-settings-overlay'>
 
-      <TimeComponent 
-        displayTime={hours}
-        increment={() => {
-          setHours(Math.min(hours + 1, 59))
-        }}
-        decrement={() => {
-          setHours(Math.max(hours - 1, 0))
-        }}
-        label='hours'
-      />
+      <div className='timer-settings-box'>
 
-      <TimeComponent 
-        displayTime={minutes}
-        increment={() => {
-          setMinutes(Math.min(minutes + 1, 59))
-        }}
-        decrement={() => {
-          setMinutes(Math.max(minutes - 1, 0))
-        }}
-        label='minutes'
-      />
+        <div className='timer-settings-row'>
 
-      <TimeComponent 
-        displayTime={seconds}
-        increment={() => {
-          setSeconds(Math.min(seconds + 1, 59))
-        }}
-        decrement={() => {
-          setSeconds(Math.max(seconds - 1, 0))
-        }}
-        label='seconds'
-      />
+          <TimeComponent 
+            displayTime={hours}
+            increment={() => {
+              setHours(Math.min(hours + 1, 59))
+            }}
+            decrement={() => {
+              setHours(Math.max(hours - 1, 0))
+            }}
+            label='hours'
+          />
 
+          <TimeComponent 
+            displayTime={minutes}
+            increment={() => {
+              setMinutes(Math.min(minutes + 1, 59))
+            }}
+            decrement={() => {
+              setMinutes(Math.max(minutes - 1, 0))
+            }}
+            label='minutes'
+          />
+
+          <TimeComponent 
+            displayTime={seconds}
+            increment={() => {
+              setSeconds(Math.min(seconds + 1, 59))
+            }}
+            decrement={() => {
+              setSeconds(Math.max(seconds - 1, 0))
+            }}
+            label='seconds'
+          />
+
+        </div>
+
+        <button>Done</button>
+
+      </div>
+      
     </div>
   )
 }
