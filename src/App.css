@@ -5,7 +5,7 @@
   justify-content: center;
 }
 
-.panel {
+.timer-page {
   display: flex;
   flex-direction: column;
   align-items: center;

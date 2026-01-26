@@ -111,7 +111,10 @@ export function Timer() {
   }
 
   return (
-    <>
+    <div className='timer-page'>
+      
+      <h1 className='brand'>wave</h1>
+
       <h1 className='time'>
         {String(remainingMin).padStart(2, '0')}
         <span>:</span>
@@ -130,6 +133,6 @@ export function Timer() {
         />
       </div>
 
-    </>
+    </div>
   )
 }
