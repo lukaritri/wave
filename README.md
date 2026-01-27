@@ -54,4 +54,4 @@ This project is a WIP. Currently, the core timer functionality has been implemen
 
 ## Notes
 
-This is my first time using React JS and Typescript. Constructive feedback is welcome and appreciated.
+This project is a work in progress and part of my continued learning in modern frontend development.
