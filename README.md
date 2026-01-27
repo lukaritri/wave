@@ -36,20 +36,14 @@ npm install
 npm run dev
 ```
 
-## Project Structure
-
-```
-src/
-```
-
 ## Status
 
 This project is a WIP. Currently, the core timer functionality has been implemented with simple UI.
 
 ## Currently Working On
 
-- Simple wave animation
-- Ability for users to change the timer
+- [ ] Timer settings
+- [ ] Simple wave animation
 
 ## Future Ideas
 
@@ -57,10 +51,6 @@ This project is a WIP. Currently, the core timer functionality has been implemen
 - Pomodoro mode
 - Ocean wave ambient sounds
 - Dynamic and reactive wave animation
-
-## Licence
-
-MIT
 
 ## Notes
 
