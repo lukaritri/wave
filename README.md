@@ -1,4 +1,4 @@
-# Wave
+# Wave (WIP)
 
 A minimal study/focus timer inspired by calming ocean waves. Developed with React, Typescript and CSS.
 
