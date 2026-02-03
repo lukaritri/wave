@@ -120,7 +120,7 @@ export function Timer({totalDurationSec, toggleSettings} : TimerProps) {
   return (
     <div className='timer-page'>
 
-      <h1 className='brand'>wave</h1>
+      <h1 className='brand' style={timerStatus != 'idle' ? {opacity : 0.6} : {}}>wave</h1>
 
       <button className='time-idle' style={timerStatus == 'idle' ? {} : {cursor: 'default'}} onClick={toggleSettings} disabled={timerStatus != 'idle'}>
         {String(remainingMin).padStart(2, '0')}
