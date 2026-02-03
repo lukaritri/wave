@@ -2,7 +2,7 @@
 
 A minimal study/focus timer inspired by calming ocean waves. Developed with React, Typescript and CSS.
 
-## Core Features
+## Core Features (v1)
 
 - Study timer
 - Clean and minimal UI
@@ -44,6 +44,8 @@ This project is a WIP. Currently, the core timer functionality has been implemen
 
 - [ ] Timer settings
 - [ ] Simple wave animation
+- [ ] Local storage persistence
+- [ ] Deployment
 
 ## Future Ideas
 
