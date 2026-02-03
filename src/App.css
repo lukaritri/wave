@@ -21,7 +21,7 @@
   line-height: 1;
 }
 
-.time {
+.time-idle {
   font-size: 6rem;
   font-weight: 500;
   letter-spacing: 0.02em;
@@ -33,7 +33,7 @@
   background-color: transparent;
 }
 
-.time span {
+.colon {
   vertical-align: 0.08em;
   color: var(--accent);
 }
