@@ -1,4 +1,5 @@
 import './TimerSettings.css'
+import './App.css'
 import UpArrow from './assets/up-arrow.svg?react'
 import DownArrow from './assets/down-arrow.svg?react'
 import { useState } from 'react'
@@ -94,7 +95,7 @@ export function TimerSettings({totalDurationSec, updateTime, toggleSettings} : T
 
         </div>
 
-        <button onClick={onDone}>Done</button>
+        <button className='btn-secondary' onClick={onDone}>Done</button>
 
       </div>
 
