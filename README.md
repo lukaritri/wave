@@ -49,8 +49,7 @@ This project is a WIP. Currently, the core timer functionality has been implemen
 
 ## Future Ideas
 
-- Break mode
-- Pomodoro mode
+- Break/pomodoro mode
 - Ocean wave ambient sounds
 - Dynamic and reactive wave animation
 
