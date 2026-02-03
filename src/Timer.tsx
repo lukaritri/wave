@@ -79,6 +79,10 @@ export function Timer({totalDurationSec, toggleSettings} : TimerProps) {
     return () => clearInterval(id) // needed for when re-starting the timer
   }, [endTimeMs, timerStatus])
 
+  useEffect(() => {
+    setRemainingSec(totalDurationSec)
+  }, [totalDurationSec])
+
   const remainingMin: number = Math.floor(remainingSec / 60)
 
   /*
@@ -115,8 +119,6 @@ export function Timer({totalDurationSec, toggleSettings} : TimerProps) {
 
   return (
     <div className='timer-page'>
-
-      <h1>{totalDurationSec}</h1>
 
       <h1 className='brand'>wave</h1>
 

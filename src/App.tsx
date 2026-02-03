@@ -16,8 +16,6 @@ function App() {
     setTotalDurationSec(newTime)
   }
 
-  // TODO: fix update timer from timer settings
-
   return (
     <div className='app'>
 
@@ -26,7 +24,10 @@ function App() {
         toggleSettings={toggleSettings}
       />
 
-      { showSettings ? <TimerSettings totalDurationSec={totalDurationSec} updateTime={updateTime} toggleSettings={toggleSettings} /> : null }
+      { showSettings ? <TimerSettings 
+                        totalDurationSec={totalDurationSec} 
+                        updateTime={updateTime} 
+                        toggleSettings={toggleSettings} /> : null }
       
     </div>
   )
