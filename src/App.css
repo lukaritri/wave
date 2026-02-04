@@ -14,10 +14,60 @@
   line-height: 1;
 }
 
+.brand-running {
+  font-size: 3.5rem;
+  font-weight: 350;
+  letter-spacing: 0.15em;
+  color: var(--muted);
+  margin-top: 8rem;
+  line-height: 1;
+  opacity: 0.35;
+  animation: brand-fade 1s ease-out;
+}
+
+@keyframes brand-fade {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0.35;
+  }
+}
+
 .time-idle {
   font-size: 6rem;
   font-weight: 500;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.05em;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  margin-top: 5rem;
+  margin-bottom: 3rem;
+  color: var(--text);
+  background-color: transparent;
+}
+
+.time-idle:hover {
+  animation-duration: 0.1s;
+  animation-timing-function: ease-out;
+  animation-name: hover-fade;
+  opacity: 0.8;
+}
+
+@keyframes hover-fade {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0.8;
+  }
+}
+
+.time-running {
+  font-size: 6rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
   font-variant-numeric: tabular-nums;
   line-height: 1;
   margin-top: 5rem;
@@ -29,6 +79,7 @@
 .colon {
   vertical-align: 0.08em;
   color: var(--accent);
+  padding: 0 0.05em;
 }
 
 .controls {
@@ -53,10 +104,23 @@ button {
   padding: var(--space-1) var(--space-3);
 }
 
+.btn-primary:hover {
+  animation-duration: 0.1s;
+  animation-timing-function: ease-out;
+  animation-name: hover-fade;
+  opacity: 0.8;
+}
+
 .btn-secondary {
   background: transparent;
-  opacity: 0.5;
-  color: var(--text);
+  color: rgba(92, 92, 92, 0.5);
   padding: 6px;
   line-height: 1;
+}
+
+.btn-secondary:hover {
+  animation-duration: 0.1s;
+  animation-timing-function: ease-out;
+  animation-name: hover-fade;
+  opacity: 0.8;
 }
