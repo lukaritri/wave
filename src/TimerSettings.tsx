@@ -54,7 +54,8 @@ export function TimerSettings({totalDurationSec, updateTime, toggleSettings} : T
   }
 
   return (
-    <div className='timer-settings-overlay'>
+    <div className='timer-settings'>
+      <button className='timer-settings-overlay' onClick={onDone}></button>
 
       <div className='timer-settings-box'>
 
@@ -71,6 +72,8 @@ export function TimerSettings({totalDurationSec, updateTime, toggleSettings} : T
             label='hours'
           />
 
+          <div className='timer-settings-colon'>:</div>
+
           <TimeComponent 
             displayTime={minutes}
             increment={() => {
@@ -81,6 +84,8 @@ export function TimerSettings({totalDurationSec, updateTime, toggleSettings} : T
             }}
             label='minutes'
           />
+
+          <div className='timer-settings-colon'>:</div>
 
           <TimeComponent 
             displayTime={seconds}
@@ -95,10 +100,8 @@ export function TimerSettings({totalDurationSec, updateTime, toggleSettings} : T
 
         </div>
 
-        <button className='btn-secondary' onClick={onDone}>Done</button>
-
       </div>
-
     </div>
+
   )
 }
