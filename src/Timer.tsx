@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import type { TimerStatus } from './types/react'
+import './Timer.css'
 
 /*
 Top-level variables
