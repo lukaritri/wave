@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react'
+import type { TimerStatus } from './types/react'
 
 /*
 Top-level variables
 */
-
-type TimerStatus = 'idle' | 'running' | 'paused'
 
 const primaryLabel: Record<TimerStatus, string> = {
   idle : 'start',
@@ -44,13 +43,17 @@ function SecondaryButton({timerStatus, onSecondaryClick} : SecondaryButtonProps)
   
 }
 
-export function Timer() {
+type TimerProps = {
+  totalDurationSec : number,
+  toggleSettings : () => void
+}
+
+export function Timer({totalDurationSec, toggleSettings} : TimerProps) {
   /*
   Timer logic
   */
 
   const [timerStatus, setTimerStatus] = useState<TimerStatus>('idle')
-  const totalDurationSec: number = 20 * 60
   const [remainingSec, setRemainingSec] = useState<number>(totalDurationSec)
   const [endTimeMs, setEndTimeMs] = useState<number | null>(null)
 
@@ -75,6 +78,10 @@ export function Timer() {
 
     return () => clearInterval(id) // needed for when re-starting the timer
   }, [endTimeMs, timerStatus])
+
+  useEffect(() => {
+    setRemainingSec(totalDurationSec)
+  }, [totalDurationSec])
 
   const remainingMin: number = Math.floor(remainingSec / 60)
 
@@ -111,12 +118,15 @@ export function Timer() {
   }
 
   return (
-    <>
-      <h1 className='time'>
+    <div className='timer-page'>
+
+      <h1 className={timerStatus == 'idle' ? 'brand' : 'brand-running'}>wave</h1>
+
+      <button className={timerStatus == 'idle' ? 'time-idle' : 'time-running'} style={timerStatus == 'idle' ? {} : {cursor: 'default'}} onClick={toggleSettings} disabled={timerStatus != 'idle'}>
         {String(remainingMin).padStart(2, '0')}
-        <span>:</span>
+        <span className='colon'>:</span>
         {String(remainingSec % 60).padStart(2, '0')}
-      </h1>
+      </button>
 
       <div className='controls'>
         <PrimaryButton
@@ -130,6 +140,6 @@ export function Timer() {
         />
       </div>
 
-    </>
+    </div>
   )
 }

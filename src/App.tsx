@@ -1,15 +1,33 @@
 import './App.css'
 import { Timer } from './Timer'
+import { TimerSettings } from './TimerSettings'
+import { useState } from 'react'
 
 function App() {
+
+  const [showSettings, setShowSettings] = useState<boolean>(false)
+  const [totalDurationSec, setTotalDurationSec] = useState<number>(25 * 60)
+
+  function toggleSettings() {
+    setShowSettings(!showSettings)
+  }
+
+  function updateTime(newTime : number) {
+    setTotalDurationSec(newTime)
+  }
 
   return (
     <div className='app'>
 
-      <div className='panel'>
-        <h1 className='brand'>wave</h1>
-        <Timer />
-      </div>
+      <Timer 
+        totalDurationSec={totalDurationSec}
+        toggleSettings={toggleSettings}
+      />
+
+      { showSettings ? <TimerSettings 
+                        totalDurationSec={totalDurationSec} 
+                        updateTime={updateTime} 
+                        toggleSettings={toggleSettings} /> : null }
       
     </div>
   )
