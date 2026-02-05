@@ -4,50 +4,6 @@
 
 }
 
-.timer-settings-row {
-  display: flex;
-  gap: 1rem;
-  text-align: center;
-}
-
-.timer-settings-unit {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0;
-}
-
-.icon-button {
-  background: none;
-  border: none;
-  padding: 12px 8px;
-  margin: 0;
-  cursor: pointer;
-}
-
-.timer-settings-label {
-    font-size: 1rem;
-    letter-spacing: 0.05rem;
-    margin-top: 0.5rem;
-    opacity: 0.5;
-}
-
-.timer-settings-edit {
-  font-size: 3rem;
-  letter-spacing: 0.04em;
-  text-align: center;
-  font-variant-numeric: tabular-nums;
-  line-height: 1;
-}
-
-.timer-settings-colon {
-  font-size: 3rem;
-  color: var(--accent);
-  transform: translateY(1.1rem);
-  text-align: center;
-}
-
 .timer-settings-overlay {
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(1.5px);
@@ -68,4 +24,48 @@
   top: 0px;
   left: 50%;
   transform: translateX(-50%);
+}
+
+.timer-settings-row {
+  display: flex;
+  gap: 1rem;
+  text-align: center;
+}
+
+.time-component {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+
+.icon-button {
+  background: none;
+  border: none;
+  padding: 12px 8px;
+  margin: 0;
+  cursor: pointer;
+}
+
+.time-component-label {
+    font-size: 1rem;
+    letter-spacing: 0.05rem;
+    margin-top: 0.5rem;
+    opacity: 0.5;
+}
+
+.time-component-edit {
+  font-size: 3rem;
+  letter-spacing: 0.04em;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.timer-settings-colon {
+  font-size: 3rem;
+  color: var(--accent);
+  transform: translateY(1.1rem);
+  text-align: center;
 }

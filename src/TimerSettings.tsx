@@ -13,13 +13,13 @@ type TimeComponentProps = {
 
 function TimeComponent({displayTime, increment, decrement, label}:TimeComponentProps) {
   return (
-    <div className='timer-settings-unit'>
+    <div className='time-component'>
 
       <button className='icon-button' onClick={increment}>
         <UpArrow />
       </button>
       
-      <div className='timer-settings-edit'>
+      <div className='time-component-edit'>
         {String(displayTime).padStart(2, '0')}
       </div>
 
@@ -27,7 +27,7 @@ function TimeComponent({displayTime, increment, decrement, label}:TimeComponentP
         <DownArrow />
       </button>
 
-      <div className='timer-settings-label'>
+      <div className='time-component-label'>
         {label}
       </div>
       
