@@ -6,7 +6,10 @@ import { useState } from 'react'
 function App() {
 
   const [showSettings, setShowSettings] = useState<boolean>(false)
-  const [totalDurationSec, setTotalDurationSec] = useState<number>(25 * 60)
+  const [totalDurationSec, setTotalDurationSec] = useState<number>(() => {
+    const durationStr = localStorage.getItem('duration')
+    return durationStr ? parseInt(durationStr) : 25 * 60
+  })
 
   function toggleSettings() {
     setShowSettings(!showSettings)
@@ -14,6 +17,7 @@ function App() {
 
   function updateTime(newTime : number) {
     setTotalDurationSec(newTime)
+    localStorage.setItem('duration', String(newTime))
   }
 
   return (
