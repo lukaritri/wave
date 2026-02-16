@@ -14,8 +14,10 @@ https://wave-ten-nu.vercel.app/
 
 ## Core Features (v1)
 
-- Study timer
-- Clean and minimal UI
+- Countdown timer
+- Settings
+- Local storage persistence
+- Clean and minimal styling
 
 ## Motivation
 
