@@ -2,6 +2,14 @@
 
 A minimal study/focus timer inspired by calming ocean waves. Developed with React, Typescript and CSS.
 
+## Live Demo
+
+https://wave-ten-nu.vercel.app/
+
+## Preview
+
+tba
+
 ## Core Features (v1)
 
 - Study timer
@@ -42,10 +50,10 @@ This project is a WIP. Currently, the core timer functionality has been implemen
 
 ## Currently Working On
 
-- [ ] Timer settings
+- [x] Timer settings
 - [ ] Simple wave animation
-- [ ] Local storage persistence
-- [ ] Deployment
+- [x] Local storage persistence
+- [x] Deployment
 
 ## Future Ideas
 
