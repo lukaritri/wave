@@ -8,7 +8,9 @@ https://wave-ten-nu.vercel.app/
 
 ## Preview
 
-tba
+<img src="./screenshots/wave-idle.png" width="700" />
+
+<img src="./screenshots/wave-settings.png" width="700" />
 
 ## Core Features (v1)
 
