@@ -1,15 +1,33 @@
-# Wave (WIP)
+# 🌊 Wave
 
-A minimal study/focus timer inspired by calming ocean waves. Developed with React, Typescript and CSS.
+A minimal focus timer inspired by calming ocean waves. Designed and built as a personal side project to explore UI design, state management, and frontend development. Developed with React, Typescript and CSS.
+
+## Live Demo
+
+https://wave-ten-nu.vercel.app/
+
+## Preview
+
+<img src="./screenshots/wave-idle.png" width="700" />
+
+<img src="./screenshots/wave-settings.png" width="700" />
 
 ## Core Features (v1)
 
-- Study timer
-- Clean and minimal UI
+- Countdown timer
+- Settings
+- Local storage persistence
+- Clean and minimal styling
+
+## Technical Highlights
+
+- State management with React hooks
+- LocalStorage for persistence without backend
+- Structured components for scalability
 
 ## Motivation
 
-Many existing productivity tools are either cluttered and overwhelming or visually uninspiring. Wave was created to be minimal and not distracting with thought put into visuals and aesthetics, creating a pleasant focus experience.
+Many existing productivity tools are either cluttered and overwhelming or visually uninspiring. Wave was created to be calm and distraction-free combinging minimal interface design with intentional visual details to enhance focus.
 
 This project is also for me to explore:
 
@@ -22,6 +40,7 @@ This project is also for me to explore:
 - React
 - Typescript
 - CSS
+- Vercel (deployment)
 
 ## Getting Started
 
@@ -38,21 +57,17 @@ npm run dev
 
 ## Status
 
-This project is a WIP. Currently, the core timer functionality has been implemented with simple UI.
+v1 complete - iterative improvements and feature expansion in progress.
 
 ## Currently Working On
 
-- [ ] Timer settings
+- [x] Timer settings
 - [ ] Simple wave animation
-- [ ] Local storage persistence
-- [ ] Deployment
+- [x] Local storage persistence
+- [x] Deployment
 
 ## Future Ideas
 
 - Break/pomodoro mode
 - Ocean wave ambient sounds
 - Dynamic and reactive wave animation
-
-## Notes
-
-This project is a work in progress and part of my continued learning in modern frontend development.
