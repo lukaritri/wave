@@ -1,7 +1,6 @@
 .timer-settings {
   width: 100%;
   height: 100%;
-
 }
 
 .timer-settings-overlay {
@@ -49,10 +48,10 @@
 }
 
 .time-component-label {
-    font-size: 1rem;
-    letter-spacing: 0.05rem;
-    margin-top: 0.5rem;
-    opacity: 0.5;
+  font-size: 1rem;
+  letter-spacing: 0.05rem;
+  margin-top: 0.5rem;
+  opacity: 0.5;
 }
 
 .time-component-edit {
