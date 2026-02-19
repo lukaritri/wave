@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import type { TimerStatus } from './types/react';
+import type { TimerStatus, SetState } from './types/react';
 import './Timer.css';
 
 /*
@@ -46,16 +46,23 @@ function SecondaryButton({
 }
 
 type TimerProps = {
+  timerStatus: TimerStatus;
+  setTimerStatus: SetState<TimerStatus>;
   totalDurationSec: number;
   toggleSettings: () => void;
 };
 
-export function Timer({ totalDurationSec, toggleSettings }: TimerProps) {
+export function Timer({
+  timerStatus,
+  setTimerStatus,
+  totalDurationSec,
+  toggleSettings,
+}: TimerProps) {
   /*
   Timer logic
   */
 
-  const [timerStatus, setTimerStatus] = useState<TimerStatus>('idle');
+  // const [timerStatus, setTimerStatus] = useState<TimerStatus>('idle');
   const [remainingSec, setRemainingSec] = useState<number>(totalDurationSec);
   const [endTimeMs, setEndTimeMs] = useState<number | null>(null);
 

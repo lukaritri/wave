@@ -1,7 +1,9 @@
 import './App.css';
 import { Timer } from './Timer';
 import { TimerSettings } from './TimerSettings';
+import { Wave } from './Wave';
 import { useState } from 'react';
+import type { TimerStatus } from './types/react';
 
 function App() {
   const [showSettings, setShowSettings] = useState<boolean>(false);
@@ -9,6 +11,7 @@ function App() {
     const durationStr = localStorage.getItem('duration');
     return durationStr ? parseInt(durationStr) : 25 * 60;
   });
+  const [timerStatus, setTimerStatus] = useState<TimerStatus>('idle');
 
   function toggleSettings() {
     setShowSettings(!showSettings);
@@ -21,10 +24,16 @@ function App() {
 
   return (
     <div className="app">
-      <Timer
-        totalDurationSec={totalDurationSec}
-        toggleSettings={toggleSettings}
-      />
+      <div className="main">
+        <Timer
+          timerStatus={timerStatus}
+          setTimerStatus={setTimerStatus}
+          totalDurationSec={totalDurationSec}
+          toggleSettings={toggleSettings}
+        />
+
+        <Wave />
+      </div>
 
       {showSettings ? (
         <TimerSettings
