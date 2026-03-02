@@ -45,6 +45,42 @@ function SecondaryButton({
   );
 }
 
+type TimeDisplayProps = {
+  timerStatus: TimerStatus;
+  toggleSettings: () => void;
+  remainingSec: number;
+};
+
+function TimeDisplay({
+  timerStatus,
+  toggleSettings,
+  remainingSec,
+}: TimeDisplayProps) {
+  const displayHour = Math.floor(remainingSec / 3600);
+  const displayMin = Math.floor((remainingSec % 3600) / 60);
+  const displaySec = remainingSec % 60;
+
+  return (
+    <button
+      className={timerStatus == 'idle' ? 'time-idle' : 'time-running'}
+      style={timerStatus == 'idle' ? {} : { cursor: 'default' }}
+      onClick={toggleSettings}
+      disabled={timerStatus != 'idle'}
+    >
+      {displayHour > 0 && (
+        <span>
+          {String(displayHour).padStart(2, '0')}
+          <span className="colon">:</span>
+        </span>
+      )}
+
+      {String(displayMin).padStart(2, '0')}
+      <span className="colon">:</span>
+      {String(displaySec).padStart(2, '0')}
+    </button>
+  );
+}
+
 type TimerProps = {
   timerStatus: TimerStatus;
   setTimerStatus: SetState<TimerStatus>;
@@ -92,8 +128,6 @@ export function Timer({
     setRemainingSec(totalDurationSec);
   }, [totalDurationSec]);
 
-  const remainingMin: number = Math.floor(remainingSec / 60);
-
   /*
   Button click functions
   */
@@ -132,16 +166,11 @@ export function Timer({
         wave
       </h1>
 
-      <button
-        className={timerStatus == 'idle' ? 'time-idle' : 'time-running'}
-        style={timerStatus == 'idle' ? {} : { cursor: 'default' }}
-        onClick={toggleSettings}
-        disabled={timerStatus != 'idle'}
-      >
-        {String(remainingMin).padStart(2, '0')}
-        <span className="colon">:</span>
-        {String(remainingSec % 60).padStart(2, '0')}
-      </button>
+      <TimeDisplay
+        timerStatus={timerStatus}
+        toggleSettings={toggleSettings}
+        remainingSec={remainingSec}
+      />
 
       <div className="controls">
         <PrimaryButton

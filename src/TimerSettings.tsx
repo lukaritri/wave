@@ -51,14 +51,12 @@ export function TimerSettings({
     Math.floor(totalDurationSec / 3600),
   );
   const [minutes, setMinutes] = useState<number>(
-    Math.floor((totalDurationSec - hours * 3600) / 60),
+    Math.floor((totalDurationSec % 3600) / 60),
   );
-  const [seconds, setSeconds] = useState<number>(
-    totalDurationSec - hours * 3600 - minutes * 60,
-  );
+  const [seconds, setSeconds] = useState<number>(totalDurationSec % 60);
 
   function onDone() {
-    const totalDurationSec = seconds + 60 * minutes + 360 * hours;
+    const totalDurationSec = seconds + 60 * minutes + 3600 * hours;
     updateTime(totalDurationSec);
     toggleSettings();
   }
