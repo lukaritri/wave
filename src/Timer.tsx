@@ -1,6 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import type { TimerStatus, SetState } from './types/react';
 import './Timer.css';
+// import { PlayChime } from './Chime';
+import chimeMp3 from './assets/chime.mp3';
 
 /*
 Top-level variables
@@ -10,6 +12,7 @@ const primaryLabel: Record<TimerStatus, string> = {
   idle: 'start',
   running: 'pause',
   paused: 'resume',
+  end: 'end',
 };
 
 type PrimaryButtonProps = {
@@ -25,6 +28,8 @@ type SecondaryButtonProps = {
 };
 
 function PrimaryButton({ timerStatus, onPrimaryClick }: PrimaryButtonProps) {
+  if (timerStatus === 'end') return null;
+
   return (
     <button className="btn-primary" onClick={onPrimaryClick}>
       {primaryLabel[timerStatus]}
@@ -101,10 +106,41 @@ export function Timer({
   // const [timerStatus, setTimerStatus] = useState<TimerStatus>('idle');
   const [remainingSec, setRemainingSec] = useState<number>(totalDurationSec);
   const [endTimeMs, setEndTimeMs] = useState<number | null>(null);
+  const chimeRef = useRef<HTMLAudioElement | null>(null);
+  const audioUnlockedRef = useRef(false);
 
-  // useEffect runs when page re-renders
+  async function unlockAudio() {
+    if (!chimeRef.current || audioUnlockedRef.current) return;
+
+    try {
+      chimeRef.current.volume = 0;
+      await chimeRef.current.play();
+      chimeRef.current.pause();
+      chimeRef.current.currentTime = 0;
+      chimeRef.current.volume = 1;
+      audioUnlockedRef.current = true;
+      console.log('audio unlocked');
+    } catch (err) {
+      console.error('Audio unlock failed:', err);
+    }
+  }
+
   useEffect(() => {
-    if (endTimeMs === null) return;
+    if (chimeRef.current) {
+      chimeRef.current.load();
+    }
+    chimeRef.current = new Audio(chimeMp3);
+    chimeRef.current.preload = 'auto';
+
+    return () => {
+      chimeRef.current?.pause();
+      chimeRef.current = null;
+    };
+  }, []);
+
+  // useEffect triggered by variables changing?
+  useEffect(() => {
+    if (endTimeMs === null || timerStatus === 'end') return;
 
     const tick = () => {
       // calculating time left more reliable than setInterval every second
@@ -125,6 +161,20 @@ export function Timer({
   }, [endTimeMs, timerStatus]);
 
   useEffect(() => {
+    if (remainingSec <= 0) {
+      console.log('ending');
+      setTimerStatus('end');
+
+      if (chimeRef.current) {
+        chimeRef.current.currentTime = 0;
+        chimeRef.current.play().catch((err) => {
+          console.error('Failed to play chime:', err);
+        });
+      }
+    }
+  }, [remainingSec, setTimerStatus]);
+
+  useEffect(() => {
     setRemainingSec(totalDurationSec);
   }, [totalDurationSec]);
 
@@ -133,6 +183,8 @@ export function Timer({
   */
 
   function handlePrimaryClick() {
+    unlockAudio();
+
     setTimerStatus((prev) => {
       switch (prev) {
         case 'idle':
@@ -145,6 +197,9 @@ export function Timer({
         case 'paused':
           setEndTimeMs(Date.now() + remainingSec * 1000); // restart timer
           return 'running';
+
+        case 'end':
+          return 'end';
       }
     });
   }
@@ -183,6 +238,8 @@ export function Timer({
           onSecondaryClick={handleSecondaryClick}
         />
       </div>
+
+      <audio ref={chimeRef} src={chimeMp3} preload="auto" />
     </div>
   );
 }
