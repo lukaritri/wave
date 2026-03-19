@@ -28,6 +28,8 @@ type SecondaryButtonProps = {
 };
 
 function PrimaryButton({ timerStatus, onPrimaryClick }: PrimaryButtonProps) {
+  if (timerStatus === 'end') return null;
+
   return (
     <button className="btn-primary" onClick={onPrimaryClick}>
       {primaryLabel[timerStatus]}
